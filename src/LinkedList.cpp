@@ -1,4 +1,5 @@
 #include "LinkedList.h"
+#include <string>
 using namespace std;
 
 Node::Node()
@@ -17,4 +18,8 @@ Node::Node(int cargo, Node* next)
 {
     this->cargo = cargo;
     this->next = next;
+}
+
+std::string Node::to_str() const {
+    return to_string(cargo);
 }
