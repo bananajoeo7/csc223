@@ -14,6 +14,6 @@ struct Node {
     static std::string render_list(Node* list);
     static std::string render_list_backward(Node* list);
     static std::string render_pretty(Node* list, string (*list_renderer)(Node*));
-    //static Node* remove_second(Node* list);
+    static Node* remove_second(Node* list);
 
 };

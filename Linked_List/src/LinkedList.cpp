@@ -50,9 +50,6 @@ std::string Node::render_pretty(Node* list, string (*list_renderer)(Node*)) {
     return "(" + list_renderer(list) + ")";
 }
 
-
-/*
-
 Node* Node::remove_second(Node* list) {
     if (list == nullptr || list->next == nullptr) {
         return nullptr;
@@ -67,4 +64,3 @@ Node* Node::remove_second(Node* list) {
     second->next = nullptr;
     return second;
 }
-*/
