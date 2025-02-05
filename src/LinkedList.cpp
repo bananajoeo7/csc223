@@ -23,3 +23,43 @@ Node::Node(int cargo, Node* next)
 std::string Node::to_str() const {
     return to_string(cargo);
 }
+
+std::string render_list(Node* list) {
+    Node* node = list;
+    std::string s = "";
+    while (node != nullptr) {
+        s += node->to_str();  // Ensure Node has a valid to_string() method
+        node = node->next;
+        if (node != nullptr)
+            s += ", ";
+    }
+    return s;
+}
+
+std::string Node::render_list_backward(std::string s) const {
+    if (next != nullptr) {
+        s = next->render_list_backward(s) + s;
+        s += ", ";
+    }
+    s += to_str();
+    return s;
+}
+
+std::string render_pretty(Node* list, std::string (*list_renderer)(Node*)) {
+    return "(" + list_renderer(list) + ")";
+}
+
+Node* remove_second(Node* list) {
+    if (list == nullptr || list->next == nullptr) {
+        return nullptr;
+    }
+    Node* first = list;
+    Node* second = list->next;
+
+    // make the first node point to the third
+    first->next = second->next;
+
+    // remove the second node from the list and return a pointer to it
+    second->next = nullptr;
+    return second;
+}
