@@ -24,7 +24,7 @@ std::string Node::to_str() const {
     return to_string(cargo);
 }
 
-std::string render_list(Node* list) {
+std::string Node::render_list(Node* list) {
     Node* node = list;
     std::string s = "";
     while (node != nullptr) {
@@ -36,7 +36,8 @@ std::string render_list(Node* list) {
     return s;
 }
 
-std::string Node::render_list_backward(std::string s) const {
+/*
+std::string Node::render_list_backward(std::string s) {
     if (next != nullptr) {
         s = next->render_list_backward(s) + s;
         s += ", ";
@@ -45,11 +46,13 @@ std::string Node::render_list_backward(std::string s) const {
     return s;
 }
 
-std::string render_pretty(Node* list, std::string (*list_renderer)(Node*)) {
+
+std::string Node::render_pretty(Node* list, std::string (*list_renderer)(Node*)) {
     return "(" + list_renderer(list) + ")";
 }
 
-Node* remove_second(Node* list) {
+
+Node* Node::remove_second(Node* list) {
     if (list == nullptr || list->next == nullptr) {
         return nullptr;
     }
@@ -63,3 +66,4 @@ Node* remove_second(Node* list) {
     second->next = nullptr;
     return second;
 }
+*/
