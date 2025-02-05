@@ -36,23 +36,22 @@ std::string Node::render_list(Node* list) {
     return s;
 }
 
-
-std::string Node::render_list_backward(Node* list, std::string s) {
-    if (list == nullptr) return "";
-
-    s = render_list_backward(list->next, s);
-    if (list->next != nullptr)
-        s += ", ";
-    s += list->to_str();
-
-    return s;
+std::string Node::render_list_backward(Node* list) {
+    if (list->next != nullptr) {
+        // Recursively render the rest of the list first
+        std::string rest = render_list_backward(list->next);
+        return rest + ", " + list->to_str();
+    } else {
+        return list->to_str();
+    }
 }
 
-/*
-std::string Node::render_pretty(Node* list, std::string (*list_renderer)(Node*)) {
+std::string Node::render_pretty(Node* list, string (*list_renderer)(Node*)) {
     return "(" + list_renderer(list) + ")";
 }
 
+
+/*
 
 Node* Node::remove_second(Node* list) {
     if (list == nullptr || list->next == nullptr) {
