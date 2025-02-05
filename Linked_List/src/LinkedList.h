@@ -12,7 +12,7 @@ struct Node {
     std::string to_str() const;
 
     static std::string render_list(Node* list);
-   /* static std::string render_list_backward(std::string s);
-    static Node* remove_second(Node* list);
-    */
+    static std::string render_list_backward(Node* list, string s);
+    //static Node* remove_second(Node* list);
+
 };

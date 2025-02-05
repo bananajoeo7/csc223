@@ -36,17 +36,19 @@ std::string Node::render_list(Node* list) {
     return s;
 }
 
-/*
-std::string Node::render_list_backward(std::string s) {
-    if (next != nullptr) {
-        s = next->render_list_backward(s) + s;
+
+std::string Node::render_list_backward(Node* list, std::string s) {
+    if (list == nullptr) return "";
+
+    s = render_list_backward(list->next, s);
+    if (list->next != nullptr)
         s += ", ";
-    }
-    s += to_str();
+    s += list->to_str();
+
     return s;
 }
 
-
+/*
 std::string Node::render_pretty(Node* list, std::string (*list_renderer)(Node*)) {
     return "(" + list_renderer(list) + ")";
 }

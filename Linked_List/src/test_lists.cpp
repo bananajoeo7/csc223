@@ -43,8 +43,8 @@ TEST_CASE("Test can display linked nodes backwards") {
     Node* node2 = new Node(2, node1);
     Node* node3 = new Node(3, node2);
     Node* node4 = new Node(4, node3);
-    CHECK(render_list(node4) == "4, 3, 2, 1");
-    CHECK(render_list_backward(node4) == "1, 2, 3, 4");
+    CHECK(Node::render_list(node4) == "4, 3, 2, 1");
+    CHECK(Node::render_list_backward(node4, "") == "1, 2, 3, 4");
 }
 
 // #5 exercise test case:
