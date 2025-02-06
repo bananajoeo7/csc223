@@ -29,5 +29,6 @@ public:
     }
 
     void insert_in_front(int cargo);
+    int remove_from_front();
     std::string render() const;
 };

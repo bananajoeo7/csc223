@@ -78,3 +78,12 @@ std::string LinkedList::render() const {
         return Node::render_list(head);
     }
 }
+
+int LinkedList::remove_from_front() {
+    Node* removed = head;
+    int removedCargo = removed->cargo;
+    head = head->next;
+    delete removed;
+    num_nodes--;
+    return removedCargo;
+}
