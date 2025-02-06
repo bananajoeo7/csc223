@@ -77,3 +77,18 @@ TEST_CASE("Test can create empty linked list") {
     list.insert_in_front(9);
     CHECK(list.render() == "9, 42, 5");
 }
+
+// #8 exercise test case: 
+TEST_CASE("Test can create empty linked list") {
+    LinkedList list;
+    list.insert_in_front(5);
+    list.insert_in_front(42);
+    list.insert_in_front(9);
+    CHECK(list.render() == "9, 42, 5");
+    list.remove_from_front();
+    CHECK(list.render() == "42, 5");
+    list.remove_from_front();
+    CHECK(list.render() == "5");
+    list.remove_from_front();
+    CHECK(list.render() == "Empty list");
+}
