@@ -64,3 +64,17 @@ Node* Node::remove_second(Node* list) {
     second->next = nullptr;
     return second;
 }
+
+void LinkedList::insert_in_front(int cargo) {
+    Node* front = new Node(cargo, head);
+    head = front;
+    num_nodes++;
+}
+
+std::string LinkedList::render() const {
+    if (Node::render_list(head) == "") {
+        return "Empty list";
+    } else {
+        return Node::render_list(head);
+    }
+}

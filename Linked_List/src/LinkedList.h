@@ -17,3 +17,18 @@ struct Node {
     static Node* remove_second(Node* list);
 
 };
+
+class LinkedList
+{
+    int num_nodes;
+    Node* head;
+
+public:
+    LinkedList() {
+        num_nodes = 0;
+        head = nullptr;
+    }
+
+    void insert_in_front(int cargo);
+    std::string render() const;
+};
