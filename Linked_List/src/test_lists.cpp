@@ -65,3 +65,15 @@ TEST_CASE("Test remove_second removes the second node correctly") {
     Node* removed = Node::remove_second(node3);
     CHECK(Node::render_list(node3) == "3, 1");
 }
+
+// #7 exercise test case: Test that you can create a LinkedList object, add elements to the front of it, and render it.
+TEST_CASE("Test can create empty linked list") {
+    LinkedList list;
+    CHECK(list.to_string() == "Empty list");
+    list.insert_in_front(5);
+    CHECK(list.to_string() == "5");
+    list.insert_in_front(42);
+    CHECK(list.to_string() == "42 -> 5");
+    list.insert_in_front(9);
+    CHECK(list.to_string() == "9 -> 42 -> 5");
+}
