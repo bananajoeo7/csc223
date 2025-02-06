@@ -56,3 +56,12 @@ TEST_CASE("Test can display linked nodes with parenthesis") {
     CHECK(Node::render_pretty(node4, &Node::render_list) == "(4, 3, 2, 1)");
     CHECK(Node::render_pretty(node4, &Node::render_list_backward) == "(1, 2, 3, 4)");
 }
+
+// #6 exercise test case: my own test case for the function remove_second
+TEST_CASE("Test remove_second removes the second node correctly") {
+    Node* node1 = new Node(1);
+    Node* node2 = new Node(2, node1);
+    Node* node3 = new Node(3, node2);
+    Node* removed = Node::remove_second(node3);
+    CHECK(Node::render_list(node3) == "3, 1");
+}
