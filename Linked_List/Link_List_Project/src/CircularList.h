@@ -13,7 +13,7 @@ struct Node
         this->next = next;
     }
 
-    string to_string() const
+    string to_stri() const
     {
         return string(cargo);
     }
@@ -27,6 +27,8 @@ class CircularList
     Node<T>* tail; // establishes the last node in the list so when edited the program won't enter an infinite loop
 
 public:
+    CircularList() : tail(nullptr), num_nodes(0) {}
+
     -CircularList() {
         while (!is_empty()) {
             remove_from_front();
@@ -66,7 +68,7 @@ public:
       return cargo;
     }
 
-    string to_string() const
+    string to_str() const
     {
         if (tail == nullptr) return "";
       
