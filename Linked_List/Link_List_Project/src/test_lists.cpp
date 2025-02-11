@@ -1,11 +1,11 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include <doctest.h>
 #include <string>
-#include "LinkedList.h"
+#include "CircularList.h"
 using namespace std;
 
 TEST_CASE("Test basic list of strings operations") {
-    LinkedList<string> toppings;
+    CircularList<string> toppings;
     toppings.insert_at_front("cheese");
     CHECK(toppings.to_string() == "cheese");
     toppings.insert_at_front("anchovies");
