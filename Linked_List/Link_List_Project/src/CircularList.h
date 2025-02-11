@@ -13,7 +13,7 @@ struct Node
         this->next = next;
     }
 
-    string to_stri() const
+    string to_string() const
     {
         return string(cargo);
     }
@@ -29,7 +29,11 @@ class CircularList
 public:
     CircularList() : tail(nullptr), num_nodes(0) {}
 
-    -CircularList() {
+    bool is_empty() const {
+        return num_nodes == 0;
+    }
+
+    ~CircularList() {
         while (!is_empty()) {
             remove_from_front();
         }
@@ -74,12 +78,11 @@ public:
       
         string result = "";
         Node<T>* node = tail->next;
-        while (node != tail->next) 
-        {
+        do {
           result += std::to_string(node->cargo);
           node = node->next;
           if (node != tail->next) result += ", ";
-        } 
+        } while (node != tail->next);
 
       return result;
     }
