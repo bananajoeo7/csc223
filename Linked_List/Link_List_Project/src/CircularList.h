@@ -68,14 +68,17 @@ public:
 
     string to_string() const
     {
-        Node<T>* node = head;
-        string s = "";
-        while (node != nullptr) {
-            s += node->to_string();
-            node = node->next;
-            if (node != nullptr)
-                s += ", ";
-        }
-        return s;
+        if (tail == nullptr) return "";
+      
+        string result = "";
+        Node<T>* node = tail->next;
+        while (node != tail->next) 
+        {
+          result += std::to_string(node->cargo);
+          node = node->next;
+          if (node != tail->next) result += ", ";
+        } 
+
+      return result;
     }
 };
