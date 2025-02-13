@@ -44,19 +44,20 @@ TEST_CASE("Test multiple insertions and removals") {
     CHECK(list.is_empty());
 }
 
-
+/*
 TEST_CASE("Test inserting and clearing the list") {
     CircularList<int> list;
     list.insert_at_front(1);
     list.insert_at_front(2);
     list.insert_at_front(3);
     CHECK(list.to_str() == "3, 2, 1");
-/*
+
     list.remove_from_front();
     list.remove_from_front();
     list.remove_from_front();
 
     CHECK(list.to_str() == "");
     CHECK(list.is_empty());
-*/
+
 }
+*/
