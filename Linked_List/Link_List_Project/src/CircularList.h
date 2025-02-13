@@ -79,7 +79,7 @@ public:
         string result = "";
         Node<T>* node = tail->next;
         do {
-            result += node->to_string();  // Add parentheses to call the method
+            result += node->to_string();
             node = node->next;
             if (node != tail->next) result += ", ";
         } while (node != tail->next);
