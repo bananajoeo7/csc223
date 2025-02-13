@@ -1,4 +1,6 @@
+#include <iostream>
 #include <string>
+#include <typeinfo>
 using namespace std;
 
 template <class T>
@@ -13,9 +15,15 @@ struct Node
         this->next = next;
     }
 
-    string to_string() const
+    #include <type_traits> // Needed for std::is_same
+
+    string stringy() const
     {
-        return string(cargo);
+        if constexpr (std::is_same<T, int>::value) { // look at this line it got new stuff
+            return std::to_string(cargo);
+        } else {
+            return string(cargo); // Assumes T is std::string or another string-convertible type
+        }
     }
 };
 
@@ -79,7 +87,7 @@ public:
         string result = "";
         Node<T>* node = tail->next;
         do {
-            result += node->to_string();
+            result += node->stringy();
             node = node->next;
             if (node != tail->next) result += ", ";
         } while (node != tail->next);
