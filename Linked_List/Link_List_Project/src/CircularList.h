@@ -75,15 +75,15 @@ public:
     string to_str() const
     {
         if (tail == nullptr) return "";
-      
+
         string result = "";
         Node<T>* node = tail->next;
         do {
-          result += node->to_string;
-          node = node->next;
-          if (node != tail->next) result += ", ";
+            result += node->to_string();  // Add parentheses to call the method
+            node = node->next;
+            if (node != tail->next) result += ", ";
         } while (node != tail->next);
 
-      return result;
+        return result;
     }
 };
