@@ -39,9 +39,9 @@ public:
         }
     }
 
-    void insert_at_front(T cargo) 
+    void insert_at_front(T cargo, Node<T>* next = nullptr) 
     {
-      Node<T>* new_node = new Node<T>(cargo);
+      Node<T>* new_node = new Node<T>(cargo, tail ? tail->next : nullptr);
       if (tail == nullptr) {
           tail = new_node;
           tail->next = tail; // Circular link
@@ -79,7 +79,7 @@ public:
         string result = "";
         Node<T>* node = tail->next;
         do {
-          result += std::to_string(node->cargo);
+          result += node->to_string;
           node = node->next;
           if (node != tail->next) result += ", ";
         } while (node != tail->next);
