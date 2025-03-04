@@ -1,5 +1,5 @@
 #pragma once
-#include "../../ch17/src/LinkedList.h"
+#include "LinkedList.h"
 
 template <class T>
 class Stack : public LinkedList<T> {
