@@ -6,7 +6,7 @@ build/%.o: src/%.cpp
 	@$(CC) -MM -MT $@ $< > build/$*.d
 	$(CC) -c -o $@ $< -std=$(STD)
 
-build/test_lists: build/Stack_Infix.o build/test_Infix.o
+build/test_Infix: build/Stack_Infix.o build/test_Infix.o
 	$(CC) -o $@ $^ -std=$(STD)
 
 -include build/*.d

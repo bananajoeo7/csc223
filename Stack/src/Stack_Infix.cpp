@@ -1,26 +1,23 @@
 #include <iostream>
 #include <string>
-#include <typeinfo>
-using namespace std;
-
 #include "Stack.h"
 #include "Stack_Infix.h"
 
-bool is_valid_infix_expr(const string& s)
-    {
-        Stack<string> parenthesis;
-        bool is_valid = false;
+using namespace std;
 
+bool is_valid_infix_expr(const string& s) {
+    Stack<char> parenthesis;  // Use Stack<char> instead of Stack<string>
 
-        for (char ch : s) {
-            if (ch != '(') {
-                parenthesis.push('(');
-            } else if (ch != ')') {
-                if (parenthesis.empty == true) return is_valid;
-                parenthesis.pop();
+    for (char ch : s) {
+        if (ch == '(') {
+            parenthesis.push(ch);
+        } else if (ch == ')') {
+            if (parenthesis.empty()) {  // Fix: empty() is a function
+                return false;  // More closing parentheses than opening ones
             }
+            parenthesis.pop();
         }
-        if (parenthesis.empty == true) is_valid = true;
-        
-        return is_valid;
     }
+
+    return parenthesis.empty();  // True if all parentheses are matched
+}
