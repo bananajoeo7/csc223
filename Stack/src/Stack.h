@@ -71,12 +71,6 @@ public:
 
         return tokens;
     }
-
-
-    bool is_valid_infix_expr()
-    {
-
-    }
 };
 
 #endif // STACK_H
