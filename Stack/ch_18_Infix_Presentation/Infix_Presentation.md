@@ -35,20 +35,24 @@ if (rightParens != leftParens) return false; // Unbalanced parentheses
 
 ```cpp
 if (isLeftParen()) {
+    // If there was another right parenthesis directly
+    // before this one, that indicates multiplication.
+    currentChar = expression[i-1];
+    if (isRightParen()) {
+        operators++; // So, increment operators.
+    }
+
     e = "";
     i++;
     currentChar = expression[i];
     parenCounter = 0;
-    do {
-        if (isLeftParen()) parenCounter++;
-        if (isRightParen()) parenCounter--;
-        e += expression[i];
-        i++;
-        currentChar = expression[i];
-    } while (!isRightParen() || parenCounter != 0);
-    
-    if (!isValidExp(e)) return false; // Recursively check inner expression
-    operands++; // Treat subexpression as a single operand
+            do {
+                if (isLeftParen()) parenCounter++;
+                if (isRightParen()) parenCounter--;
+                e += expression[i];
+                i++;
+                currentChar = expression[i];
+            } while (!isRightParen() || parenCounter != 0);
 }
 ```
 
@@ -63,3 +67,7 @@ if (isLeftParen()) {
 
 ## Questions?
 
+
+
+### Credits:
+https://www.geeksforgeeks.org/infix-postfix-prefix-notation/
