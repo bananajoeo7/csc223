@@ -19,14 +19,19 @@ struct Node
 template <class T>
 class LinkedList
 {
-    Node<T>* head;
 
 public:
+    Node<T>* head;
+
     LinkedList() {
         head = nullptr;
     }
 
-    int length() {
+    Node<T>* getHead() {
+        return head;
+    }
+    
+    int length() const {
         if (head == nullptr) return 0;
         if (head->next == nullptr) return 1;
         int num_nodes = 0;

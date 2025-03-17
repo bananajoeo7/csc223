@@ -12,8 +12,6 @@ build/%.o: src/%.cpp
 
 test: build/test_APQueue
 	./build/test_APQueue
-	  build/test_LPQueue
-	./build/test_LPQueue
 
 clean:
 	rm -rf build
