@@ -61,7 +61,7 @@ TEST_CASE("Test insert() and remove()") {
 
     CHECK(pair.thing1.color == RED);
     CHECK(pair.thing2.color == GREEN);
-    CHECK(pair.thing1.label == "Red3");
+    CHECK(pair.thing1.label == "Red1");
     CHECK(pair.thing2.label == "Green1"); // Because green1 was the first green to be pushed, it'll be at the front
 
     pair = rgtpq.remove();
@@ -75,7 +75,7 @@ TEST_CASE("Test insert() and remove()") {
     
     CHECK(pair.thing1.color == RED);
     CHECK(pair.thing2.color == GREEN);
-    CHECK(pair.thing1.label == "Red1");
+    CHECK(pair.thing1.label == "Red3");
     CHECK(pair.thing2.label == "Green3");
 
     CHECK(rgtpq.empty() == true);
