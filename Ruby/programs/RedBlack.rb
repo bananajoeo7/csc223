@@ -121,6 +121,7 @@ class RedBlackTree
     node
   end
 
+  # Credit to ChatGPT for creating visualization
   def visualize(node = @root_node)
     lines = build_lines(node)
     lines.each { |line| puts line }
@@ -159,7 +160,7 @@ end
 
 # Sample usage
 tree = RedBlackTree.new
-[6, 9, 4, 2, 8, 23, 100, 28, 75, 47].each { |val| tree.insert(val) }
+[6, 9, 4, 8, 23, 28, 47].each { |val| tree.insert(val) }
 tree.visualize
 
 # Delete an element
