@@ -11,7 +11,7 @@ class RBNode
     @color = color
   end
 
-  def red?
+  def c_red?
     @color == RED
   end
 end
@@ -45,7 +45,7 @@ class RedBlackTree
   end
 
   def red?(node)
-    node&.red?
+    node&.c_red?
   end
 
   def rotate_left(h)

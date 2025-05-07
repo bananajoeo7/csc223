@@ -92,6 +92,24 @@ end
 
 ### Red-Black Tree Code:
 ``` 
+class RBNode
+  attr_accessor :value, :left, :right, :color
+
+  RED = :red
+  BLACK = :black
+
+  def initialize(value, color = RED)
+    @value = value
+    @left = nil
+    @right = nil
+    @color = color
+  end
+
+  def c_red?
+    @color == RED
+  end
+end
+
 class RedBlackTree
   attr_accessor :root_node
 
