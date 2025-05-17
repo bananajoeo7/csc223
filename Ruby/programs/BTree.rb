@@ -78,7 +78,6 @@ class BTree
     end
   end
 
-  # Adapted pretty print for multi-way B-Tree nodes
   def print_tree
     print_btree(@root)
   end
@@ -88,10 +87,8 @@ class BTree
   def print_btree(node, prefix = "", is_last = true)
     return if node.nil?
 
-    # Print current node keys
     puts prefix + (is_last ? "└── " : "├── ") + node.keys.inspect
 
-    # Prefix for children
     new_prefix = prefix + (is_last ? "    " : "│   ")
 
     node.children.each_with_index do |child, index|
@@ -101,7 +98,6 @@ class BTree
   end
 end
 
-# Example usage:
 
 btree = BTree.new
 
