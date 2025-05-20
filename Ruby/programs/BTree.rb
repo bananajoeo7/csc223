@@ -94,7 +94,7 @@ class BTree
   end
 end
 
-# 🔧 Example usage:
+# Example:
 
 btree = BTree.new
 
