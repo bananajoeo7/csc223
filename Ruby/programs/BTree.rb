@@ -56,7 +56,7 @@ class BTreeNode
 end
 
 class BTree
-  def initialize(t = 3)
+  def initialize(t = 2)
     @t = t
     @root = BTreeNode.new(t)
   end
