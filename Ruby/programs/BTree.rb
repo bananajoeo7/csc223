@@ -34,7 +34,7 @@ class BTreeNode
     end
   end
 
-  # ✅ Corrected split logic
+  # Corrected split logic
   def split_child(i)
     y = @children[i]
     z = BTreeNode.new(@t, y.leaf)
