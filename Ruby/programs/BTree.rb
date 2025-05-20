@@ -2,18 +2,16 @@ class BTreeNode
   attr_accessor :keys, :children, :leaf
 
   def initialize(t, leaf = true)
-    @t = t                  # Minimum degree (defines max keys = 2t-1)
-    @keys = []              # Keys in node
-    @children = []          # Child pointers
-    @leaf = leaf            # Leaf node or not
+    @t = t                  # Minimum degree
+    @keys = []              # Array of keys
+    @children = []          # Array of child pointers
+    @leaf = leaf            # Boolean: is leaf or not
   end
 
-  # Insert key in node that is guaranteed not full
   def insert_non_full(key)
     i = @keys.size - 1
 
     if @leaf
-      # Insert key into correct position in keys array
       @keys << nil
       while i >= 0 && key < @keys[i]
         @keys[i + 1] = @keys[i]
@@ -21,13 +19,11 @@ class BTreeNode
       end
       @keys[i + 1] = key
     else
-      # Find child to insert into
       while i >= 0 && key < @keys[i]
         i -= 1
       end
       i += 1
 
-      # If child full, split it
       if @children[i].keys.size == 2 * @t - 1
         split_child(i)
         if key > @keys[i]
@@ -38,28 +34,29 @@ class BTreeNode
     end
   end
 
-  # Split child node at index i
+  # ✅ Corrected split logic
   def split_child(i)
     y = @children[i]
     z = BTreeNode.new(@t, y.leaf)
 
-    # Transfer second half keys to z
+    mid_key = y.keys[@t - 1]  # middle key to promote
+
+    # Split keys and children
     z.keys = y.keys[@t..-1]
     y.keys = y.keys[0...@t - 1]
 
-    # Transfer children if not leaf
     unless y.leaf
       z.children = y.children[@t..-1]
       y.children = y.children[0...@t]
     end
 
     @children.insert(i + 1, z)
-    @keys.insert(i, y.keys.pop)
+    @keys.insert(i, mid_key)
   end
 end
 
 class BTree
-  def initialize(t = 3)  # t=3 => max 5 keys per node, so max 4 keys before split
+  def initialize(t = 3)
     @t = t
     @root = BTreeNode.new(t)
   end
@@ -88,7 +85,6 @@ class BTree
     return if node.nil?
 
     puts prefix + (is_last ? "└── " : "├── ") + node.keys.inspect
-
     new_prefix = prefix + (is_last ? "    " : "│   ")
 
     node.children.each_with_index do |child, index|
@@ -98,6 +94,7 @@ class BTree
   end
 end
 
+# 🔧 Example usage:
 
 btree = BTree.new
 
